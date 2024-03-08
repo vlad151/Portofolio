@@ -32,15 +32,13 @@ const ChartSwitcher = () => {
         }
       };
 
-      // Set the option for the chart based on the current chart type
       myChart.setOption(getOption());
 
-      // Cleanup function to dispose of the chart when the component unmounts
       return () => {
         myChart.dispose();
       };
     }
-  }, [chartType]); // Re-run this effect when chartType changes
+  }, [chartType]);
 
   return (
     <Box>
