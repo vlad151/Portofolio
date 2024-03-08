@@ -1,14 +1,13 @@
+import { Box } from "@mui/material";
 import "./App.css";
-import ChartSwitcher from "./components/chart/chart";
-import PageHeader from "./components/header/header";
+
+import Content from "./components/content/content";
 
 function App() {
   return (
-    <div className="App">
-      <PageHeader />
-
-      <ChartSwitcher />
-    </div>
+    <Box className="App">
+      <Content />
+    </Box>
   );
 }
 
