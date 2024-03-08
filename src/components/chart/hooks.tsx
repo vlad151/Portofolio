@@ -10,7 +10,7 @@ function getIconUrlByName(name: any) {
       "https://icons.veryicon.com/png/o/business/vscode-program-item-icon/javascript-3.png",
     ],
     HTML: ["https://cdn-icons-png.freepik.com/512/919/919827.png"],
-    CSS: ["[https://cdn-icons-png.flaticon.com/512/919/919826.png"],
+    CSS: ["https://cdn-icons-png.flaticon.com/512/919/919826.png"],
     npm: [
       "https://cdn.iconscout.com/icon/free/png-256/free-npm-3521612-2945056.png",
     ],
