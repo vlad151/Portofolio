@@ -6,7 +6,7 @@ import "./styles.css";
 import { getIconUrlByName } from "./hooks";
 const ChartSwitcher = () => {
   const chartRef = useRef(null);
-  const [chartType, setChartType] = useState("treemap");
+  const [chartType, setChartType] = useState("sunburst");
 
   useEffect(() => {
     if (chartRef.current) {
@@ -45,7 +45,6 @@ const ChartSwitcher = () => {
               data: skillsData,
               radius: [20, "90%"],
               itemStyle: {
-                borderRadius: 7,
                 borderWidth: 2,
               },
             },

@@ -7,6 +7,7 @@ import {
   Radio,
   RadioGroup,
   Box,
+  useTheme,
 } from "@mui/material";
 import ARBooking from "../../assets/ARBooking.png";
 import BestMovies from "../../assets/BestMovies.png";
@@ -24,7 +25,7 @@ type ProjectKey =
 const ProjectList: FunctionComponent = () => {
   const [selectedProject, setSelectedProject] =
     useState<ProjectKey>("RemoteGreenhouse");
-
+  const theme = useTheme();
   const projectImages: Record<ProjectKey, string> = {
     ARBooking: ARBooking,
     BestMovies: BestMovies,
@@ -75,8 +76,13 @@ const ProjectList: FunctionComponent = () => {
                     padding: "8px 16px",
                     transition: "background-color 0.3s ease",
                     backgroundColor:
-                      selectedProject === projectKey ? "#1976d2" : "#f5f5f5",
-                    color: selectedProject === projectKey ? "white" : "black",
+                      selectedProject === projectKey
+                        ? theme.palette.text.secondary
+                        : "#f5f5f5",
+                    color:
+                      selectedProject === projectKey
+                        ? theme.palette.secondary.main
+                        : "black",
                     textAlign: "center",
                   },
                 }}
