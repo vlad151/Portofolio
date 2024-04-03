@@ -1,6 +1,9 @@
-import { Box, Card, Typography } from "@mui/material";
+import { Box, Typography } from "@mui/material";
 import { FunctionComponent } from "react";
 import "./style.css";
+import GitHubIcon from "@mui/icons-material/GitHub";
+import LinkedInIcon from "@mui/icons-material/LinkedIn";
+
 const PageHeader: FunctionComponent = () => {
   return (
     <Box className="pageHeaderCard">
@@ -18,6 +21,25 @@ const PageHeader: FunctionComponent = () => {
         cutting-edge solutions or exploring the latest in technology, I'm on a
         mission to make an impact and have a blast doing it!
       </Typography>
+      <Box>
+        <Typography>{"Let's connect :D"}</Typography>
+        <a
+          className="linkStyle"
+          href="https://www.github.com/vlad151"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          <GitHubIcon className="linkIcon" />
+        </a>
+        <a
+          className="linkStyle"
+          href="https://www.linkedin.com/in/lazar-vlad"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          <LinkedInIcon className="linkIcon" />
+        </a>
+      </Box>
     </Box>
   );
 };

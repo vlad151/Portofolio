@@ -13,3 +13,11 @@
 .greetingText {
   color: #7fffd4;
 }
+.linkStyle {
+  color: white;
+  text-decoration: none;
+}
+.linkIcon {
+  font-size: 2.5rem !important;
+  margin-left: 10px;
+}
