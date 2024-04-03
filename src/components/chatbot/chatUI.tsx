@@ -9,6 +9,7 @@ import {
   Paper,
   TextField,
 } from "@mui/material";
+import { useTheme } from "@mui/material/styles";
 import { Send as SendIcon } from "@mui/icons-material";
 import { useEffect, useState } from "react";
 import myImage from "./chatbot_avatar.jpg";
@@ -27,7 +28,7 @@ const ChatUI: React.FC = () => {
       setSendDisabled(true);
     }
   }, [inputValue, sendDisabled]);
-
+  const theme = useTheme();
   const handleSendMessage = async () => {
     if (inputValue.trim()) {
       const userMessage = {
@@ -112,13 +113,20 @@ const ChatUI: React.FC = () => {
               {message.sender === "assistant" ? (
                 <Avatar alt="Vlad" src={myImage} />
               ) : (
-                <Avatar sx={{ bgcolor: "orange" }}>you</Avatar>
+                <Avatar sx={{ bgcolor: "#123123", color: "white" }}>you</Avatar>
               )}
               <ListItemText
                 primary={message.text}
                 style={{
+                  marginLeft: "10px",
+                  color:
+                    message.sender === "user"
+                      ? "black"
+                      : theme.palette.text.secondary,
                   backgroundColor:
-                    message.sender === "user" ? "#e0f7fa" : "#e1bee7",
+                    message.sender === "user"
+                      ? theme.palette.text.secondary
+                      : theme.palette.secondary.main,
                   padding: "10px",
                   borderRadius: "10px",
                 }}
