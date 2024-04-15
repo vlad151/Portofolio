@@ -6,3 +6,8 @@
   flex-direction: column;
   width: 100%;
 }
+.alignCenter {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}

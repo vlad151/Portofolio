@@ -1,5 +1,4 @@
 import { Box } from "@mui/material";
-import "./App.css";
 import Content from "./components/content/content";
 import { createTheme, ThemeProvider, CssBaseline } from "@mui/material";
 const theme = createTheme({

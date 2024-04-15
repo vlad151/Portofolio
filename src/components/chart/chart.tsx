@@ -85,7 +85,7 @@ const ChartSwitcher = () => {
         ref={chartRef}
         sx={{
           width: "100%",
-          height: "500px",
+          height: "600px",
         }}
       />
     </Box>

@@ -11,7 +11,7 @@ import {
 } from "@mui/material";
 import { useTheme } from "@mui/material/styles";
 import { Send as SendIcon } from "@mui/icons-material";
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import myImage from "./chatbot_avatar.jpg";
 import chatConfig from "./chatConfig";
 const ChatUI: React.FC = () => {
@@ -21,6 +21,15 @@ const ChatUI: React.FC = () => {
   const [inputValue, setInputValue] = useState("");
   const [sendDisabled, setSendDisabled] = useState(true);
   const [isConversationStarted, setIsConversationStarted] = useState(false);
+  const scrollRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    if (scrollRef.current) {
+      const { scrollHeight, clientHeight } = scrollRef.current;
+      scrollRef.current.scrollTop = scrollHeight - clientHeight;
+    }
+  }, [messages]);
+
   useEffect(() => {
     if (inputValue.length > 0 && inputValue.trim().length > 0) {
       setSendDisabled(false);
@@ -97,66 +106,97 @@ const ChatUI: React.FC = () => {
       return "Sorry, I can't respond at the moment.";
     }
   }
+  const [containerSize, setContainerSize] = useState({ width: 0, height: 0 });
+  const containerRef = useRef(null);
+  useEffect(() => {
+    const resizeObserver = new ResizeObserver((entries) => {
+      if (entries[0].target) {
+        const { width, height } = entries[0].target.getBoundingClientRect();
+        setContainerSize({ width, height });
+      }
+    });
 
+    if (containerRef.current) {
+      resizeObserver.observe(containerRef.current);
+    }
+
+    return () => {
+      resizeObserver.disconnect();
+    };
+  }, [containerRef]);
   return (
-    <Container maxWidth="sm" className="chatContainer">
-      <Paper style={{ height: "300px", overflow: "auto", padding: "20px" }}>
-        <List>
-          {messages.map((message) => (
-            <ListItem
-              key={message.id}
-              style={{
-                justifyContent:
-                  message.sender === "user" ? "flex-end" : "flex-start",
-              }}
-            >
-              {message.sender === "assistant" ? (
-                <Avatar alt="Vlad" src={myImage} />
-              ) : (
-                <Avatar sx={{ bgcolor: "#123123", color: "white" }}>you</Avatar>
-              )}
-              <ListItemText
-                primary={message.text}
-                style={{
-                  marginLeft: "10px",
-                  color:
-                    message.sender === "user"
-                      ? "black"
-                      : theme.palette.text.secondary,
-                  backgroundColor:
-                    message.sender === "user"
-                      ? theme.palette.text.secondary
-                      : theme.palette.secondary.main,
-                  padding: "10px",
-                  borderRadius: "10px",
-                }}
-              />
-            </ListItem>
-          ))}
-        </List>
-      </Paper>
-      <Grid container style={{ paddingTop: "20px" }}>
+    <Container ref={containerRef}>
+      <Grid
+        item
+        container
+        xs={12}
+        sx={{ display: "flex", justifyContent: "center" }}
+      >
         <Grid item xs={10}>
-          <TextField
-            fullWidth
-            label="Type a message..."
-            variant="outlined"
-            value={inputValue}
-            onChange={(e) => setInputValue(e.target.value)}
-            onKeyPress={(e) => e.key === "Enter" && handleSendMessage()}
-          />
-        </Grid>
-        <Grid item xs={2} sx={{ display: "flex", alignItems: "center" }}>
-          <Button
-            disabled={sendDisabled}
-            fullWidth
-            variant="outlined"
-            color="primary"
-            endIcon={<SendIcon />}
-            onClick={handleSendMessage}
+          <Paper
+            style={{ height: "300px", overflow: "auto", padding: "20px" }}
+            ref={scrollRef}
           >
-            Send
-          </Button>
+            <List>
+              {messages.map((message) => (
+                <ListItem
+                  key={message.id}
+                  style={{
+                    justifyContent:
+                      message.sender === "user" ? "flex-end" : "flex-start",
+                  }}
+                >
+                  {message.sender === "assistant" ? (
+                    <Avatar alt="Vlad" src={myImage} />
+                  ) : (
+                    <Avatar sx={{ bgcolor: "#123123", color: "white" }}>
+                      you
+                    </Avatar>
+                  )}
+                  <ListItemText
+                    primary={message.text}
+                    style={{
+                      marginLeft: "10px",
+                      color:
+                        message.sender === "user"
+                          ? "black"
+                          : theme.palette.text.secondary,
+                      backgroundColor:
+                        message.sender === "user"
+                          ? theme.palette.text.secondary
+                          : theme.palette.secondary.main,
+                      padding: "10px",
+                      borderRadius: "10px",
+                    }}
+                  />
+                </ListItem>
+              ))}
+            </List>
+          </Paper>
+          <Grid container style={{ paddingTop: "20px" }}>
+            <Grid item xs={10}>
+              <TextField
+                fullWidth
+                label="Type a message..."
+                variant="outlined"
+                value={inputValue}
+                onChange={(e) => setInputValue(e.target.value)}
+                onKeyPress={(e) => e.key === "Enter" && handleSendMessage()}
+              />
+            </Grid>
+            <Grid item xs={2} sx={{ display: "flex", alignItems: "center" }}>
+              <Button
+                disabled={sendDisabled}
+                fullWidth
+                variant="outlined"
+                color="primary"
+                endIcon={<SendIcon />}
+                onClick={handleSendMessage}
+              >
+                Send
+              </Button>
+            </Grid>
+          </Grid>
         </Grid>
       </Grid>
     </Container>
