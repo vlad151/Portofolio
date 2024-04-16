@@ -1,4 +1,4 @@
-import { FunctionComponent, useEffect, useState } from "react";
+import { FunctionComponent, useState } from "react";
 import {
   FormControl,
   FormControlLabel,
@@ -13,7 +13,7 @@ import BestMovies from "../../assets/BestMovies.png";
 import Gemquest from "../../assets/Gemquest.png";
 import RemoteGreenhouse from "../../assets/RemoteGreenhouse.png";
 import ViaClub from "../../assets/ViaClub.png";
-import { CSSTransition } from "react-transition-group";
+
 type ProjectKey =
   | "ARBooking"
   | "BestMovies"
@@ -32,34 +32,19 @@ const ProjectList: FunctionComponent = () => {
     RemoteGreenhouse: RemoteGreenhouse,
     ViaClub: ViaClub,
   };
-  const [imageLoaded, setImageLoaded] = useState(false);
-
-  useEffect(() => {
-    setImageLoaded(false);
-  }, [selectedProject]);
 
   const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     const value = event.target.value as ProjectKey;
     setSelectedProject(value);
   };
+
   function formatLabel(label: string) {
     return label.replace(/([A-Z])/g, " $1").trim();
   }
-  useEffect(() => {
-    // Preload images
-    const preloadImages = Object.values(projectImages);
-    preloadImages.forEach((image) => {
-      const img = new Image();
-      img.src = image;
-    });
-  }, []);
+
   return (
-    <Grid
-      container
-      className="projectListContainer alignCenter"
-      sx={{ width: "100%" }}
-    >
-      <Grid xs={12} md={4} item>
+    <Grid container className="projectListContainer alignCenter">
+      <Grid xs={6} md={5} item>
         <FormControl
           component="fieldset"
           sx={{ display: "flex", justifyContent: "center" }}
@@ -77,19 +62,14 @@ const ProjectList: FunctionComponent = () => {
             }}
           >
             {Object.keys(projectImages).map((projectKey) => (
-              <Box
-                key={projectKey}
-                sx={{
-                  flexGrow: 1,
-                }}
-              >
+              <Box key={projectKey}>
                 <FormControlLabel
                   control={<Radio sx={{ display: "none" }} />}
                   label={formatLabel(projectKey)}
                   value={projectKey}
                   sx={{
                     "& .MuiFormControlLabel-label": {
-                      width: "100%",
+                      width: "200px",
                       borderRadius: "20px",
                       padding: "8px 16px",
                       marginLeft: "15px",
@@ -115,25 +95,23 @@ const ProjectList: FunctionComponent = () => {
           </RadioGroup>
         </FormControl>
       </Grid>
-      <Grid xs={12} sm={10} md={6} item>
-        <CSSTransition
-          key={selectedProject}
-          timeout={300}
-          classNames="fade"
-          sx={{ width: "100%" }}
-        >
-          <Box
-            component="img"
-            sx={{
-              width: "auto",
-              height: "300px",
-              marginTop: 2,
-            }}
-            src={projectImages[selectedProject]}
-            alt={selectedProject}
-            onLoad={() => setImageLoaded(true)}
-          />
-        </CSSTransition>
+      <Grid xs={12} sm={10} md={7} item sx={{ margin: { xs: 4, md: 0 } }}>
+        {Object.keys(projectImages).map((key) => {
+          const projectKey = key as ProjectKey;
+          return (
+            <img
+              key={projectKey}
+              src={projectImages[projectKey]}
+              alt={projectKey}
+              style={{
+                width: "100%",
+                height: "auto",
+                display: selectedProject === projectKey ? "block" : "none",
+                transition: "opacity 0.3s ease-in-out",
+              }}
+            />
+          );
+        })}
       </Grid>
     </Grid>
   );

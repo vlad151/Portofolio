@@ -17,7 +17,7 @@ const Content: React.FC = () => {
           <PageHeader />
         </Grid>
         <Grid className="alignCenter" item>
-          <Grid item xs={10} md={8} sx={{ margin: { xs: 1, md: 0 } }}>
+          <Grid item xs={10} md={8} sx={{ margin: { xs: 3, md: 6 } }}>
             <Typography
               variant="body1"
               sx={{ color: `${theme.palette.text.secondary}` }}
@@ -46,7 +46,7 @@ const Content: React.FC = () => {
             marginTop: { xs: 2, md: 2 },
           }}
         >
-          <Grid item xs={10} sm={10} md={8} sx={{ margin: { xs: 1, md: 0 } }}>
+          <Grid item xs={10} sm={10} md={8} sx={{ margin: { xs: 4, md: 6 } }}>
             <Typography
               variant="body1"
               sx={{ color: `${theme.palette.text.secondary}` }}
@@ -63,7 +63,7 @@ const Content: React.FC = () => {
           <Grid
             item
             xs={12}
-            md={8}
+            md={6}
             sm={10}
             sx={{ margin: { xs: 1, md: 0 } }}
             className="alignCenter"
@@ -71,22 +71,28 @@ const Content: React.FC = () => {
             <ProjectList />
           </Grid>
         </Grid>
-        <Grid item xs={10} md={2} sx={{ margin: { xs: 1, md: 0 } }}>
-          <Typography
-            variant="body1"
-            sx={{ color: `${theme.palette.text.secondary}` }}
-          >
-            Discover my chatbot
-          </Typography>
-          <Typography variant="body2">
-            Harness the power of AI with my custom-built chatbot, a seamless
-            integration of advanced natural language processing with OpenAI API.
-            Designed to understand and respond to your queries with
-            context-aware precision.
-          </Typography>
-        </Grid>
-        <Grid item xs={12} md={6} sx={{ margin: { xs: 1, md: 0 } }}>
-          <ChatUI />
+        <Grid
+          container
+          className="alignCenter"
+          sx={{ flexDirection: "row-reverse" }}
+        >
+          <Grid item xs={12} md={2} sx={{ margin: { xs: 1, md: 0 } }}>
+            <Typography
+              variant="body1"
+              sx={{ color: `${theme.palette.text.secondary}` }}
+            >
+              Discover my chatbot
+            </Typography>
+            <Typography variant="body2">
+              Harness the power of AI with my custom-built chatbot, a seamless
+              integration of advanced natural language processing with OpenAI
+              API. Designed to understand and respond to your queries with
+              context-aware precision.
+            </Typography>
+          </Grid>
+          <Grid item xs={12} md={6} sx={{ margin: { xs: 3, md: 6 } }}>
+            <ChatUI />
+          </Grid>
         </Grid>
       </Grid>
     </Box>

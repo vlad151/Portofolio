@@ -132,7 +132,7 @@ const ChatUI: React.FC = () => {
         xs={12}
         sx={{ display: "flex", justifyContent: "center" }}
       >
-        <Grid item xs={10}>
+        <Grid item xs={12}>
           <Paper
             style={{ height: "300px", overflow: "auto", padding: "20px" }}
             ref={scrollRef}
@@ -188,7 +188,7 @@ const ChatUI: React.FC = () => {
               <Button
                 disabled={sendDisabled}
                 fullWidth
-                variant="outlined"
+                variant="text"
                 color="primary"
                 endIcon={<SendIcon />}
                 onClick={handleSendMessage}

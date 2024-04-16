@@ -4,6 +4,7 @@ import skillsData from "./skillsData";
 import { Box, ToggleButton, Typography } from "@mui/material";
 import "./styles.css";
 import { getIconUrlByName } from "./hooks";
+
 const ChartSwitcher = () => {
   const chartRef = useRef(null);
   const [chartType, setChartType] = useState("sunburst");
@@ -64,7 +65,14 @@ const ChartSwitcher = () => {
 
       myChart.setOption(getOption(), true);
 
+      const handleResize = () => {
+        myChart.resize();
+      };
+
+      window.addEventListener("resize", handleResize);
+
       return () => {
+        window.removeEventListener("resize", handleResize);
         myChart.dispose();
       };
     }
