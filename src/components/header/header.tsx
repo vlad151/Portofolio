@@ -24,7 +24,7 @@ const PageHeader: FunctionComponent = () => {
         </Typography>
 
         <Typography variant="body2">
-          Hey there! I'm a software developer based in the beautiful Denmark,
+          Hello there! I'm a software developer based in the beautiful Denmark,
           diving deep into the world of coding, and all things tech. I'm
           graduating in 2024 with a degree in Software Engineering, and I'm all
           about turning bold ideas into reality. Whether it's through crafting
