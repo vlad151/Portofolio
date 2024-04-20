@@ -1,46 +1,31 @@
-# Getting Started with Create React App
+# Vlad's Portfolio
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+Welcome to my personal portfolio on GitHub! This site showcases my abilities and projects in web development, particularly focusing on data visualization, AI integration, and responsive web applications. Explore my work to see innovative uses of Apache ECharts, the OpenAI API, ReactJS, and TypeScript.
 
-## Available Scripts
+## Features
 
-In the project directory, you can run:
+- **Interactive Data Visualizations**: Utilizing Apache ECharts for dynamic and responsive charts.
+- **AI-Enhanced Functionality**: Integration of OpenAI's powerful API to enrich user interactions and data processing.
+- **Single-Page Application**: Built with ReactJS for a seamless user experience across the entire site.
 
-### `npm start`
+![image](https://github.com/vlad151/Portofolio/assets/72742599/bf2d921e-c85f-4cb1-af34-d074d15d9645)
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+![image](https://github.com/vlad151/Portofolio/assets/72742599/12b90442-6953-41a7-889b-d20a14191e5e)
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
 
-### `npm test`
+## Technologies Used
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+- **ReactJS**: A JavaScript library for building user interfaces, ensuring a reactive and component-driven architecture.
+- **TypeScript**: Used for writing scalable and error-free code, enhancing development efficiency and performance.
+- **Apache ECharts**: A powerful, interactive charting and visualization library for browser environments.
+- **OpenAI API**: Leveraging AI to provide intelligent responses and data insights.
 
-### `npm run build`
+## Setup
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+To run this project locally, you'll need to have Node.js installed. Follow these steps:
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
-
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
-
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
+```bash
+git clone https://github.com/vlad151/Portofolio.git
+cd Portofolio
+npm install
+npm start
